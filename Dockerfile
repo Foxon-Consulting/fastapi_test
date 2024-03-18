@@ -1,5 +1,5 @@
 #
-FROM python:3.11
+FROM python:3.12
 
 # x-release-please-start-version
 COPY ./out/fastapi_test-0.0.0-py3-none-any.whl ./fastapi_test-0.0.0-py3-none-any.whl

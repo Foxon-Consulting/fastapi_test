@@ -23,7 +23,7 @@ jobs:
   # integration:
   #   uses: Foxon-Consulting/github-actions/.github/workflows/python_integration.yml@main
   #   with:
-  #     python_version: "3.11"
+  #     python_version: "3.12"
 
   integration:
     needs:
@@ -32,10 +32,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python "3.11"
+      - name: Set up Python "3.12"
         uses: actions/setup-python@v2
         with:
-          python-version: "3.11"
+          python-version: "3.12"
       - name: update pip
         run: |
           python -m pip install --upgrade pip
