@@ -7,9 +7,10 @@ on:
   push:
     branches-ignore:
       - "release-please--*"
-    release:
-      types:
-        - published
+  release:
+    types:
+      - published
+
 jobs:
   setup:
     uses: Foxon-Consulting/github-actions/.github/workflows/setup.yml@main
