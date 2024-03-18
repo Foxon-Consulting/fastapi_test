@@ -27,7 +27,6 @@ jobs:
 
   build:
     needs:
-      - lint
       - setup
       - pre-commit
     runs-on: ubuntu-latest
