@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/Foxon-Consulting/fastapi_test/compare/fastapi_test-1.0.0...fastapi_test-1.0.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* :bug: ploptest ([6862291](https://github.com/Foxon-Consulting/fastapi_test/commit/686229149068ab01d1ab7a19c1c663d507a6216e))
+
 ## [1.0.0](https://github.com/Foxon-Consulting/fastapi_test/compare/fastapi_test-v0.1.1...fastapi_test-1.0.0) (2024-03-18)
 
 
