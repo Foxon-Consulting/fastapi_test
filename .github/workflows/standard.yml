@@ -65,17 +65,17 @@ jobs:
         with:
           RELEASE_PLEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
 
-delivery:
-    uses: Foxon-Consulting/github-actions/.github/workflows/docker_delivery.yml@main
-    if: github.event_name == 'release'
-    secrets: inherit
-    needs:
-      - setup
-      - releasing
-    with:
-      download-artifact-name: ${{ needs.setup.outputs.name }}
-      deploy-image-name: ${{ needs.setup.outputs.name }}
-      deploy-image-tag: ${{ needs.setup.outputs.version }}
+  delivery:
+      uses: Foxon-Consulting/github-actions/.github/workflows/docker_delivery.yml@main
+      if: github.event_name == 'release'
+      secrets: inherit
+      needs:
+        - setup
+        - releasing
+      with:
+        download-artifact-name: ${{ needs.setup.outputs.name }}
+        deploy-image-name: ${{ needs.setup.outputs.name }}
+        deploy-image-tag: ${{ needs.setup.outputs.version }}
 
   # delivery:
   #   needs:
