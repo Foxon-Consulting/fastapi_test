@@ -5,8 +5,11 @@ on:
     branches:
       - main
   push:
-    branches:
-      - "**"
+    branches-ignore:
+      - "release-please--*"
+    release:
+      types:
+        - published
 jobs:
   setup:
     uses: Foxon-Consulting/github-actions/.github/workflows/setup.yml@main
@@ -55,16 +58,16 @@ jobs:
       - integration
     if: github.ref == 'refs/heads/main'
     steps:
-      name: releasing
-      uses: Foxon-Consulting/github-actions/delivery/common/release-please@main
-      with:
-        RELEASE_PLEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
+      - name: releasing
+        uses: Foxon-Consulting/github-actions/delivery/common/release-please@main
+        with:
+          RELEASE_PLEASE_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN }}
 
 delivery:
     uses: Foxon-Consulting/github-actions/.github/workflows/docker_delivery.yml@main
     if: github.event_name == 'release'
     secrets: inherit
-    needs:  
+    needs:
       - setup
       - releasing
     with:
@@ -118,4 +121,3 @@ delivery:
   #     - name: Test with tox
   #       run: |
   #         tox
-  
