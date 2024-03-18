@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools >= 57.0", "wheel" ]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fastapi_test"
+version = "0.1.2"
+description = "Project description"
+requires-python = ">=3.11"
+readme = "README.md"
+authors = [ { name = "Louis", email = "louis.dalonis@gmail.com"}]
+
+dependencies = [
+  "tomli",
+  "fastapi",
+  "uvicorn"
+]
+
+[project.optional-dependencies]
+ci = ["black", "coverage", "pylint", "flake8"]
+cd = ["twine"]
+
+[project.scripts]
+api = "main:main"
+
+[tool.black]
+line-length = 79
+use-tabs = false
+tab-width = 2

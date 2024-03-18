@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  python-toolkit:
+    image: foxonconsulting/python-toolkit:1.0.0
+    volumes:
+      - //var/run/docker.sock:/var/run/docker.sock
+      - ./:/fastapi_test
+    container_name: "python-toolkit_cn"
+    restart: unless-stopped
+    command: bash -c "while true; do sleep 1; done"
