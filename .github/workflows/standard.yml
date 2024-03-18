@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.upload-artifact-name }}
-          path: /dist/${{ needs.setup.outputs.name }}-${{ needs.setup.outputs.version }}-py3-none-any.whl
+          path: ./dist/${{ needs.setup.outputs.name }}-${{ needs.setup.outputs.version }}-py3-none-any.whl
 
   releasing:
     runs-on: ubuntu-latest
