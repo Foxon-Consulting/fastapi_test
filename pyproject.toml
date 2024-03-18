@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "fastapi_test"
 version = "0.1.2"
 description = "Project description"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 readme = "README.md"
 authors = [ { name = "Louis", email = "louis.dalonis@gmail.com"}]
 
