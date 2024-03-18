@@ -8,6 +8,7 @@
       "draft": false,
       "prerelease": false,
       "include-v-in-tag": false,
+      "package-name": "fastapi_test",
       "extra-files": [
         "Dockerfile"
       ]
