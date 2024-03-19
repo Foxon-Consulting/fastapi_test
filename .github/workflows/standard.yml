@@ -63,7 +63,7 @@ jobs:
     with:
       dockerfile-path: ./Dockerfile
       download-artifact-name: ${{ needs.setup.outputs.name }}
-      upload-artifact-name: ${{ needs.setup.outputs.name == 'fastapi_test' && needs.setup.outputs.name + '-image' || null }}
+      upload-artifact-name: ${{ needs.setup.outputs.name == 'fastapi_test' && format('needs.setup.outputs.name-{0}', 'image') || null }}
 
   releasing:
     runs-on: ubuntu-latest
@@ -85,7 +85,7 @@ jobs:
         - integration
         - image_build
       with:
-        download-artifact-name: ${{ needs.setup.outputs.name + '-image' }}
+        download-artifact-name: format('needs.setup.outputs.name-{0}', 'image')
         deploy-image-name: ${{ needs.setup.outputs.name }}
         deploy-image-tag: ${{ needs.setup.outputs.version }}
 
