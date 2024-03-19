@@ -47,6 +47,7 @@ jobs:
         run: |
           python -m build --wheel
       - name: Upload artifact
+        if: ${{ needs.setup.outputs.name == 'fastapi_test' }}
         uses: actions/upload-artifact@v4
         with:
           name: ${{ needs.setup.outputs.name }}
@@ -57,6 +58,7 @@ jobs:
       - setup
       - pre-commit
       - integration
+    if: ${{ needs.setup.outputs.name == 'fastapi_test' }}
     uses: Foxon-Consulting/github-actions/.github/workflows/docker_build.yml@main
     with:
       dockerfile-path: ./Dockerfile
