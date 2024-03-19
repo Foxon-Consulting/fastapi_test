@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/Foxon-Consulting/fastapi_test/compare/fastapi_test-1.1.0...fastapi_test-1.1.1) (2024-03-19)
+
+
+### Bug Fixes
+
+* :bug: pouettest ([0a58c4e](https://github.com/Foxon-Consulting/fastapi_test/commit/0a58c4e35ee6d4a215d29eddcdd567be38671d9a))
+
 ## [1.1.0](https://github.com/Foxon-Consulting/fastapi_test/compare/fastapi_test-1.0.3...fastapi_test-1.1.0) (2024-03-19)
 
 
