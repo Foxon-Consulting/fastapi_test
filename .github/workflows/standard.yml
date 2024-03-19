@@ -15,6 +15,19 @@ jobs:
   setup:
     uses: Foxon-Consulting/github-actions/.github/workflows/setup.yml@main
 
+  print:
+    needs:
+      - setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: print
+        run: |
+          echo "name: ${{ needs.setup.outputs.name }}"
+          echo "version: ${{ needs.setup.outputs.version }}"
+          echo "python_version: ${{ needs.setup.outputs.python_version }}"
+          echo "image: ${{ needs.setup.outputs.image }}"
+          echo "image_tag: ${{ true && format(needs.setup.outputs.name-{0}, 'image') || null }}
+
   pre-commit:
     runs-on: ubuntu-latest
     steps:
@@ -63,7 +76,7 @@ jobs:
     with:
       dockerfile-path: ./Dockerfile
       download-artifact-name: ${{ needs.setup.outputs.name }}
-      upload-artifact-name: ${{ needs.setup.outputs.name == 'fastapi_test' && format('needs.setup.outputs.name-{0}', 'image') || null }}
+      upload-artifact-name: ${{ needs.setup.outputs.name == 'fastapi_test' && format(needs.setup.outputs.name-{0}, 'image') || null }}
 
   releasing:
     runs-on: ubuntu-latest
