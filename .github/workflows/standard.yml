@@ -63,7 +63,7 @@ jobs:
     with:
       dockerfile-path: ./Dockerfile
       download-artifact-name: ${{ needs.setup.outputs.name }}
-      upload-artifact-name: ${{ needs.setup.outputs.name == 'fastapi_test' || null }}
+      upload-artifact-name: ${{ needs.setup.outputs.name == 'fastapi_test' && needs.setup.outputs.name || null }}
 
   releasing:
     runs-on: ubuntu-latest
