@@ -57,6 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - integration
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: releasing
         uses: Foxon-Consulting/github-actions/delivery/common/release-please@main
@@ -69,7 +70,7 @@ jobs:
       secrets: inherit
       needs:
         - setup
-        - releasing
+        - integration
       with:
         download-artifact-name: ${{ needs.setup.outputs.name }}
         deploy-image-name: ${{ needs.setup.outputs.name }}
