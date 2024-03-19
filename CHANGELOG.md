@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/Foxon-Consulting/fastapi_test/compare/fastapi_test-1.1.8...fastapi_test-2.0.0) (2024-03-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* :boom: majorchange
+
+### Features
+
+* :boom: majorchange ([7d4649e](https://github.com/Foxon-Consulting/fastapi_test/commit/7d4649ec856252711c1ade23ef249defbf9a1019))
+
 ## [1.1.8](https://github.com/Foxon-Consulting/fastapi_test/compare/fastapi_test-1.1.7...fastapi_test-1.1.8) (2024-03-19)
 
 
