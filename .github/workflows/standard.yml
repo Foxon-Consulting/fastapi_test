@@ -83,6 +83,7 @@ jobs:
       needs:
         - setup
         - integration
+        - image_build
       with:
         download-artifact-name: ${{ needs.setup.outputs.name }}
         deploy-image-name: ${{ needs.setup.outputs.name }}
