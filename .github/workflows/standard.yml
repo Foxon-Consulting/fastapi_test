@@ -31,34 +31,6 @@ jobs:
       upload-artifact-name: ${{ needs.setup.outputs.name == 'fastapi_test' && needs.setup.outputs.name || null }}
       artifact-path: './dist/${{ needs.setup.outputs.name }}-${{ needs.setup.outputs.version }}-py3-none-any.whl'
 
-
-  # integration:
-  #   needs:
-  #     - setup
-  #     - pre-commit
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Set up Python "3.12"
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: "3.12"
-  #     - name: update pip
-  #       run: |
-  #         python -m pip install --upgrade pip
-  #     - name: Install build dependencies
-  #       run: |
-  #         pip install build
-  #     - name: build wheel
-  #       run: |
-  #         python -m build --wheel
-  #     - name: Upload artifact
-  #       if: ${{ needs.setup.outputs.name == 'fastapi_test' }}
-  #       uses: actions/upload-artifact@v4
-  #       with:
-  #         name: ${{ needs.setup.outputs.name }}
-  #         path: ./dist/${{ needs.setup.outputs.name }}-${{ needs.setup.outputs.version }}-py3-none-any.whl
-
   image_build:
     needs:
       - setup
@@ -94,50 +66,3 @@ jobs:
         download-artifact-name: 'docker-image'
         deploy-image-name: ${{ needs.setup.outputs.name }}
         deploy-image-tag: ${{ needs.setup.outputs.version }}
-
-  # delivery:
-  #   needs:
-  #     - releasing
-  #   if: github.ref == 'refs/heads/main'
-  #   permissions:
-  #     contents: write
-  #     pull-requests: write
-  #   uses: Foxon-Consulting/github-actions/.github/workflows/python_delivery.yml@main
-
-  # deployment:
-  #   needs:
-  #     - releasing
-  #     - delivery
-  #   if: github.ref == 'refs/heads/dev'
-  #   permissions:
-  #     contents: write
-  #     pull-requests: write
-  #   uses: Foxon-Consulting/github-actions/.github/workflows/python_deployment.yml@main
-  #     lint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Set up Python ${{ inputs.python_version }}
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: ${{ inputs.python_version }}
-  #     - name: update pip
-  #       run: |
-  #         python -m pip install --upgrade pip
-  #     - name: Install application
-  #       run: |
-  #         pip install .
-  #     - name: Install CI dependencies
-  #       run: |
-  #         pip install --no-input flake8 black tox pytest
-  #     - name: Lint with flake8
-  #       run: |
-  #         # stop the build if there are Python syntax errors or undefined names
-  #         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-  #         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-  #         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-  #     - name: Check formatting with black
-  #       uses: psf/black@stable
-  #     - name: Test with tox
-  #       run: |
-  #         tox
