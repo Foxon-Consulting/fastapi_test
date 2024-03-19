@@ -53,6 +53,17 @@ jobs:
           name: ${{ needs.setup.outputs.name }}
           path: ./dist/${{ needs.setup.outputs.name }}-${{ needs.setup.outputs.version }}-py3-none-any.whl
 
+  image_build:
+    needs:
+      - setup
+      - pre-commit
+      - integration
+    uses: Foxon-Consulting/github-actions/.github/workflows/docker_build.yml@main
+    with:
+      dockerfile-path: ./Dockerfile
+      download-artifact-name: ${{ needs.setup.outputs.name }}
+      upload-artifact-name: ${{ needs.setup.outputs.name == 'fastapi_test' || null }}
+
   releasing:
     runs-on: ubuntu-latest
     needs:
